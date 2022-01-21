@@ -1,0 +1,36 @@
+// (+/-) (A[i] + i) (+/-) (A[i] - i)
+
+//Case 1 :  (A[i] + i) + (A[i] - i)
+//Case 2 : -(A[i] + i) + (A[i] - i)
+//Case 3 : -(A[i] + i) - (A[i] - i)
+//Case 4 :  (A[i] + i) - (A[i] - i)
+
+//Find the values corresponding to max and min of (A[i] + i) & (A[i] - i)
+int Solution::maxArr(vector<int> &A) {
+
+int min1 = INT_MAX, min2 = INT_MAX;
+int max1 = INT_MIN, max2 = INT_MIN;
+
+for(int i=0; i < A.size(); i++){
+    
+    int temp1 = A[i] + i;
+    if(temp1 > max1)
+        max1 = temp1;
+        
+    if(temp1 < min1)
+        min1 = temp1;
+        
+    int temp2 = A[i] - i;
+    if(temp2 < min2)
+        min2 = temp2;
+        
+    if(temp2 > max2)
+        max2 = temp2;
+}
+
+int opt1,opt2;
+opt1 = max1 - min1;
+opt2 = max2 - min2;
+
+return max(opt1,opt2);
+}
